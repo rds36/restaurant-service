@@ -1,4 +1,7 @@
 package com.rds.restaurantservice.dto;
 
-public class UpdateAvailabilityMenuItemRequest {
-}
+import jakarta.validation.constraints.NotNull;
+
+public record UpdateAvailabilityMenuItemRequest(
+        @NotNull Boolean isAvailable
+){ }

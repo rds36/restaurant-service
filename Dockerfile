@@ -2,8 +2,8 @@
 FROM maven:3.9-eclipse-temurin-21 AS build
 
 # Arg modul (folder) & nama artefak
-ARG MODULE_DIR=user-service
-ARG JAR_NAME=user-service
+ARG MODULE_DIR=restaurant-service
+ARG JAR_NAME=restaurant-service
 
 # Workdir root repo
 WORKDIR /workspace
@@ -37,12 +37,12 @@ USER spring:spring
 WORKDIR /app
 
 # Salin jar hasil build
-ARG MODULE_DIR=user-service
-ARG JAR_NAME=user-service
+ARG MODULE_DIR=restaurant-service
+ARG JAR_NAME=restaurant-service
 COPY --from=build /workspace/${MODULE_DIR}/target/${JAR_NAME}*.jar /app/app.jar
 
 # Port service (opsional, untuk dokumentasi)
-EXPOSE 8081
+EXPOSE 8082
 
 # Opsi JVM default (bisa override via env JAVA_OPTS)
 ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+ExitOnOutOfMemoryError"
